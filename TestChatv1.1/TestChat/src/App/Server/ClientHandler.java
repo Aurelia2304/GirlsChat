@@ -39,6 +39,8 @@ public class ClientHandler implements Runnable {
             while (true) {
                 /*сервер отправляет сообщение*/
                 server.sendMessageToAllClients("Нас подслушивает неизвестный...");
+                //выводим количество подключенных клиентов
+                server.sendMessageToAllClients("Теперь пользователей на сервере аж "+ clients_count+ "!");
                 break;
             }
             while (true) {
