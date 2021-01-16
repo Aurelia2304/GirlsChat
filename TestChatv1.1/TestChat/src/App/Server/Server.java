@@ -11,6 +11,7 @@ public class Server {
     /*список клиентов*/
     private ArrayList<ClientHandler> clients = new ArrayList<ClientHandler>();
 
+    private ArrayList<String> clientsNames = new ArrayList<>();
     /*запуск сервера*/
     public Server() {
         Socket clientS = null;
@@ -46,9 +47,14 @@ public class Server {
     }
 
     /*отправка сообщения всем клиентам*/
-    public void sendMessageToAllClients(String msg) {
+    public void sendMessageToAllClients(String name, String msg) {
+        if (!clientsNames.contains(name)) {
+            if (name.length() <= 225) {
+                clientsNames.add(name);
+            }
+        }
         for (ClientHandler o : clients) {
-            o.sendMsg(msg);
+            o.sendMsg(name, msg);
         }
     }
 
