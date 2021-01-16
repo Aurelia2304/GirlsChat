@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClientWindow extends JFrame {
     private Socket clientS;
@@ -53,6 +55,10 @@ public class ClientWindow extends JFrame {
         jtfName = new JTextField("Введите ваше имя: ");
         bottomPanel.add(jtfName, BorderLayout.WEST);
 
+
+
+        Pattern patternErrorName = Pattern.compile("[ @#$%^&*)(?><;]");
+
         /*обработчик события нажатия кнопки отправки сообщения*/
         jbSendMessage.addActionListener(new ActionListener() {
             @Override
@@ -60,9 +66,15 @@ public class ClientWindow extends JFrame {
                 /*если имя клиента, и сообщение непустые, то отправляем сообщение*/
                 if (!jtfMessage.getText().trim().isEmpty() && !jtfName.getText().trim().isEmpty()) {
                     clientName = jtfName.getText();
-                    sendMsg();
-                    /*фокус на текстовое поле с сообщением*/
-                    jtfMessage.grabFocus();
+                    Matcher matcherErrorName = patternErrorName.matcher(clientName);
+                    if (matcherErrorName.find()) {
+                        jtfName.setText("!errorName!");
+                    } else {
+                        sendMsg();
+                        /*фокус на текстовое поле с сообщением*/
+                        jtfMessage.grabFocus();
+                    }
+
                 }
             }
         });
@@ -147,3 +159,4 @@ public class ClientWindow extends JFrame {
     }
 
 }
+
