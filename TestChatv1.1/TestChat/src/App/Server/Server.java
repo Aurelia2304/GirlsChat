@@ -16,20 +16,22 @@ public class Server {
         Socket clientS = null;
         ServerSocket serverS = null;
         /*создание серверного сокета*/
+
         try {
             serverS = new ServerSocket(8080);
             System.out.println("Сервер запущен. Ждём людишек!");
             while (true) {
                 /*создание клиентского сокета*/
                 clientS = serverS.accept();
-
                 /*обработчик подключения к серверу */
                 ClientHandler client = new ClientHandler(clientS, this);
                 clients.add(client);
                 /*каждое подключение клиента обрабатывается в новом потоке*/
                 new Thread(client).start();
+
             }
         }
+
         catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -43,6 +45,7 @@ public class Server {
                 ex.printStackTrace();
             }
         }
+
     }
 
     /*отправка сообщения всем клиентам*/
@@ -51,7 +54,6 @@ public class Server {
             o.sendMsg(msg);
         }
     }
-
     /*удаление клиента при выходе*/
     public void removeClient(ClientHandler client) {
         clients.remove(client);
