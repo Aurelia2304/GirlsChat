@@ -38,21 +38,24 @@ public class ClientHandler implements Runnable {
         try {
             while (true) {
                 /*сервер отправляет сообщение*/
-                server.sendMessageToAllClients("Нас подслушивает неизвестный...");
+                server.sendMessageToAllClients("Неизвестный", "Нас подслушивает неизвестный...");
                 //выводим количество подключенных клиентов
-                server.sendMessageToAllClients("Теперь на сервере пользователей аж " + clients_count + " !");
+                server.sendMessageToAllClients("","Теперь пользователей на сервере аж "+ clients_count+ "!");
                 break;
             }
             while (true) {
                 /*если клиент отправляет сообщение*/
                 if (inMessage.hasNext()) {
                     String clientMessage = inMessage.nextLine();
+                    String nameMessage[] = clientMessage.split(":");
                     /*данное сообщение отправлятся всем клиентам*/
-                    server.sendMessageToAllClients(clientMessage);
+                    if (nameMessage.length == 2){
+                        server.sendMessageToAllClients(nameMessage[0], nameMessage[1]);
+                    }
                     if (clientMessage.equalsIgnoreCase("Сессия завершена")) {
                         break;
                     }
-                    server.sendMessageToAllClients(clientMessage);
+                    server.sendMessageToAllClients(nameMessage[0], nameMessage[1]);
                 }
                 /*приостановка потока*/
                 Thread.sleep(100);
@@ -67,9 +70,9 @@ public class ClientHandler implements Runnable {
     }
 
     /*отправка сообщения*/
-    public void sendMsg(String msg) {
+    public void sendMsg(String name, String msg) {
         try {
-            outMessage.println(msg);
+            outMessage.println(name + ":" + msg);
             outMessage.flush();
         } catch (Exception ex) {
             ex.printStackTrace();
