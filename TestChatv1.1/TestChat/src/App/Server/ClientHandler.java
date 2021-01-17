@@ -38,7 +38,9 @@ public class ClientHandler implements Runnable {
         try {
             while (true) {
                 /*сервер отправляет сообщение*/
-                server.sendMessageToAllClients("Неизвестный","Нас подслушивает неизвестный...");
+                server.sendMessageToAllClients("Неизвестный", " Нас подслушивает неизвестный...");
+                //выводим количество подключенных клиентов
+                server.sendMessageToAllClients("","Теперь пользователей на сервере аж "+ clients_count+ "!");
                 break;
             }
             while (true) {
@@ -47,13 +49,17 @@ public class ClientHandler implements Runnable {
                     String clientMessage = inMessage.nextLine();
                     String nameMessage[] = clientMessage.split(":");
                     /*данное сообщение отправлятся всем клиентам*/
-                    if (nameMessage.length == 2) {
+                    if (nameMessage.length == 2){
                         server.sendMessageToAllClients(nameMessage[0], nameMessage[1]);
+                        if (nameMessage[1].contains("вышел из чата!")) {
+                            server.removeClient(this);
+                        } else if (nameMessage[1].contains("покинул нас")) {
+                            server.removeClient(this);
+                        }
                     }
                     if (clientMessage.equalsIgnoreCase("Сессия завершена")) {
                         break;
                     }
-                    server.sendMessageToAllClients(nameMessage[0],nameMessage[1]);
                 }
                 /*приостановка потока*/
                 Thread.sleep(100);

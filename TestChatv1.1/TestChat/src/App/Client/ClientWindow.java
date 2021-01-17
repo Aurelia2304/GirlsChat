@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClientWindow extends JFrame {
     private Socket clientS;
@@ -26,7 +28,7 @@ public class ClientWindow extends JFrame {
     public ClientWindow(){
 
         try {
-            Socket clientS = new Socket("localhost", 8080);
+            clientS = new Socket("localhost", 8080);
             inMessage = new Scanner(clientS.getInputStream());
             outMessage = new PrintWriter(clientS.getOutputStream());
         } catch (IOException e) {
@@ -42,8 +44,6 @@ public class ClientWindow extends JFrame {
         jtaTextAreaMessage.setLineWrap(true);
         JScrollPane jsp = new JScrollPane(jtaTextAreaMessage);
         add(jsp, BorderLayout.CENTER);
-        JLabel jlNumberOfClients = new JLabel("Количество клиентов в чате: ");
-        add(jlNumberOfClients, BorderLayout.NORTH);
         JPanel bottomPanel = new JPanel(new BorderLayout());
         add(bottomPanel, BorderLayout.SOUTH);
         JButton jbSendMessage = new JButton("Отправить");
@@ -53,6 +53,10 @@ public class ClientWindow extends JFrame {
         jtfName = new JTextField("Введите ваше имя: ");
         bottomPanel.add(jtfName, BorderLayout.WEST);
 
+
+
+        Pattern patternErrorName = Pattern.compile("[ @#$%^&*)(?><;]");
+
         /*обработчик события нажатия кнопки отправки сообщения*/
         jbSendMessage.addActionListener(new ActionListener() {
             @Override
@@ -60,12 +64,21 @@ public class ClientWindow extends JFrame {
                 /*если имя клиента, и сообщение непустые, то отправляем сообщение*/
                 if (!jtfMessage.getText().trim().isEmpty() && !jtfName.getText().trim().isEmpty()) {
                     clientName = jtfName.getText();
-                    sendMsg();
-                    /*фокус на текстовое поле с сообщением*/
-                    jtfMessage.grabFocus();
+                    Matcher matcherErrorName = patternErrorName.matcher(clientName);
+                    if (matcherErrorName.find()) {
+                        jtfName.setText("!errorName!");
+                    } else {
+                        sendMsg();
+                        /*фокус на текстовое поле с сообщением*/
+                        jtfMessage.grabFocus();
+                    }
+
                 }
             }
         });
+
+
+
 
         /*при фокусе поле сообщения очищается*/
         jtfMessage.addFocusListener(new FocusAdapter() {
@@ -96,7 +109,6 @@ public class ClientWindow extends JFrame {
                             String inMes = inMessage.nextLine();
                             String clientsInChat = "Клиентов в чате = ";
                             if (inMes.indexOf(clientsInChat) == 0) {
-                                jlNumberOfClients.setText(inMes);
                             } else {
                                 /*выводим сообщение*/
                                 jtaTextAreaMessage.append(inMes);
@@ -119,9 +131,9 @@ public class ClientWindow extends JFrame {
                 try {
                     // здесь проверяем, что имя клиента непустое и не равно значению по умолчанию
                     if (!clientName.isEmpty() && clientName != "Введите ваше имя: ") {
-                        outMessage.println(clientName + " вышел из чата!");
+                        outMessage.println(clientName + ": вышел из чата!");
                     } else {
-                        outMessage.println("Тайный слушатель покинул нас");
+                        outMessage.println("Тайный слушатель: покинул нас");
                     }
                     /*служебное сообщение*/
                     outMessage.flush();
@@ -147,3 +159,4 @@ public class ClientWindow extends JFrame {
     }
 
 }
+
