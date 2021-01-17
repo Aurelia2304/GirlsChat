@@ -79,6 +79,9 @@ public class ClientWindow extends JFrame {
             }
         });
 
+
+
+
         /*при фокусе поле сообщения очищается*/
         jtfMessage.addFocusListener(new FocusAdapter() {
             @Override
