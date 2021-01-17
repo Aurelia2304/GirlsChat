@@ -29,6 +29,7 @@ public class Bot {
 
         try {
             while (true) {
+<<<<<<< HEAD
 
                 /*если есть входящее сообщение*/
                 if (inMessage.hasNext()) {
@@ -44,6 +45,13 @@ public class Bot {
 
 
 
+=======
+                /*если есть входящее сообщение*/
+                if (inMessage.hasNext()) {
+
+                }
+            }
+>>>>>>> e5a8ec575eb02486ba3f4399e26d34ce745df00e
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,5 +68,10 @@ public class Bot {
 
     }
 
+<<<<<<< HEAD
 }
 
+=======
+
+}
+>>>>>>> e5a8ec575eb02486ba3f4399e26d34ce745df00e

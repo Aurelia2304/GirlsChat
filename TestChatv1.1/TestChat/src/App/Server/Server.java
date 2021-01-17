@@ -1,19 +1,16 @@
 package App.Server;
 
+import App.Bot.Bot;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-
 public class Server {
 
     private ArrayList<String> clientsNames = new ArrayList<>();
-
-    //static Logger logger = LogManager.getLogger(Server.class);
 
     /*список клиентов*/
     private ArrayList<ClientHandler> clients = new ArrayList<ClientHandler>();
@@ -26,9 +23,8 @@ public class Server {
         try {
             serverS = new ServerSocket(8080);
 
-            //logger.info("Сокет сервера создан");
-
             System.out.println("Сервер запущен. Ждём людишек!");
+            startBot();
             while (true) {
                 /*создание клиентского сокета*/
                 clientS = serverS.accept();
@@ -40,18 +36,17 @@ public class Server {
                 new Thread(client).start();
             }
         }
-        catch (IOException ex) {
-           // logger.error("Ошибка запуска сервера");
+        catch (IOException e) {
+            e.printStackTrace();
         }
         finally {
             try {
                 // закрываем подключение
                 clientS.close();
                 System.out.println("Сервер остановлен");
-                //logger.info("Сервер остановлен");
                 serverS.close();
-            } catch (IOException ex) {
-                //logger.error("Ошибка остановки сервера");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -73,6 +68,7 @@ public class Server {
         clients.remove(client);
     }
 
+<<<<<<< HEAD
 
     public void printAllNames() {
         for (int i = 0; i < clientsNames.size(); i++) {
@@ -81,3 +77,12 @@ public class Server {
     }
 }
 
+=======
+public void startBot(){
+        new Thread(()->{
+            Bot bot = new Bot(this);
+        }).start();
+}
+
+}
+>>>>>>> e5a8ec575eb02486ba3f4399e26d34ce745df00e
