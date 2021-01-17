@@ -18,6 +18,8 @@
 ![продолжение работы, присоединение нового пользователя](https://github.com/Aurelia2304/GirlsChat/blob/main/%D0%BF%D1%80%D0%BE%D0%B4%D0%BE%D0%BB%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B.JPG)
 #### *в чате осталась только Аська*
 ![в чате осталась только Аська](https://github.com/Aurelia2304/GirlsChat/blob/main/%D0%BA%D0%BE%D0%BD%D0%B5%D1%86%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B.JPG)
+#### *диалог с ботом*
+![диалог с ботом](https://github.com/Aurelia2304/GirlsChat/blob/main/image_2021_01_17T22_19_54_033Z.png)
 
 ### Установочка
 + открываем программочку Intellij IDEA
