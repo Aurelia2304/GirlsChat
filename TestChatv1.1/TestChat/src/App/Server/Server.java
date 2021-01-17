@@ -1,5 +1,7 @@
 package App.Server;
 
+import App.Bot.Bot;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -29,6 +31,7 @@ public class Server {
             //logger.info("Сокет сервера создан");
 
             System.out.println("Сервер запущен. Ждём людишек!");
+            startBot();
             while (true) {
                 /*создание клиентского сокета*/
                 clientS = serverS.accept();
@@ -72,5 +75,11 @@ public class Server {
     public void removeClient(ClientHandler client) {
         clients.remove(client);
     }
+
+public void startBot(){
+        new Thread(()->{
+            Bot bot = new Bot(this);
+        }).start();
+}
 
 }
