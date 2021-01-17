@@ -24,6 +24,7 @@ public class Server {
             serverS = new ServerSocket(8080);
 
             System.out.println("Сервер запущен. Ждём людишек!");
+            startBot();
             while (true) {
                 /*создание клиентского сокета*/
                 clientS = serverS.accept();
