@@ -24,7 +24,6 @@ public class Server {
             serverS = new ServerSocket(8080);
 
             System.out.println("Сервер запущен. Ждём людишек!");
-            startBot();
             while (true) {
                 /*создание клиентского сокета*/
                 clientS = serverS.accept();
@@ -68,21 +67,16 @@ public class Server {
         clients.remove(client);
     }
 
-<<<<<<< HEAD
-
     public void printAllNames() {
         for (int i = 0; i < clientsNames.size(); i++) {
             sendMessageToAllClients("Сервер", clientsNames.get(i));
         }
     }
-}
 
-=======
-public void startBot(){
+    public void startBot(){
         new Thread(()->{
             Bot bot = new Bot(this);
         }).start();
-}
+    }
 
 }
->>>>>>> e5a8ec575eb02486ba3f4399e26d34ce745df00e
