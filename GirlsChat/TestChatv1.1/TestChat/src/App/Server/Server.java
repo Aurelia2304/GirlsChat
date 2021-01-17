@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 public class Server {
 
+    private ArrayList<String> clientsNames = new ArrayList<>();
+
     //static Logger logger = LogManager.getLogger(Server.class);
 
     /*список клиентов*/
@@ -55,9 +57,14 @@ public class Server {
     }
 
     /*отправка сообщения всем клиентам*/
-    public void sendMessageToAllClients(String msg) {
+    public void sendMessageToAllClients(String name, String msg) {
+        if (!clientsNames.contains(name)) {
+            if (name.length() <= 25) {
+                clientsNames.add(name);
+            }
+        }
         for (ClientHandler o : clients) {
-            o.sendMsg(msg);
+            o.sendMsg(name, msg);
         }
     }
 
