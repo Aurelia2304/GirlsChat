@@ -10,6 +10,7 @@
 # Ссылочки
 * [https://github.com/Aurelia2304/GirlsChat] - исходный репозиторий на GitHub
 * [https://marp-tp.atlassian.net/jira/software/projects/GIR/boards/1/backlog] - JIRA, отслеживание наших удач и нет
+* [https://ru.wikihow.com/%D1%81%D1%82%D0%B0%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%D0%BE%D0%BC] - главный туториал
 
 # Примерчики
 
