@@ -73,4 +73,11 @@ public class Server {
         clients.remove(client);
     }
 
+
+    public void printAllNames() {
+        for (int i = 0; i < clientsNames.size(); i++) {
+            sendMessageToAllClients("Сервер", clientsNames.get(i));
+        }
+    }
 }
+
