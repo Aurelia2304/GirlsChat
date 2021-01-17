@@ -1,15 +1,15 @@
 # GirlsChat
-чатик для бландинок с грубым БОТиком
+## чатик для бландинок с грубым БОТиком
 
-(ง ͠° ͟ل͜ ͡°)ง - Бох 
-(͡°╭͜ʖ╮͡°) - Аська
-ಠ_ಠ - Полька
-٩(͡๏̯͡๏)۶ - Машуська
-(☞ﾟヮﾟ)☞ ☜(ﾟヮﾟ☜) - Улька и её вторая личность
+* (ง ͠° ͟ل͜ ͡°)ง - Бох 
+* (͡°╭͜ʖ╮͡°) - Аська
+* ಠ_ಠ - Полька
+* ٩(͡๏̯͡๏)۶ - Машуська
+* (☞ﾟヮﾟ)☞ ☜(ﾟヮﾟ☜) - Улька и её вторая личность
 
 # Ссылки
-https://github.com/Aurelia2304/GirlsChat - исходный репозиторий на GitHub
-https://marp-tp.atlassian.net/jira/software/projects/GIR/boards/1/backlog - JIRA, отслеживание наших удач и нет
+* [https://github.com/Aurelia2304/GirlsChat] - исходный репозиторий на GitHub
+* [https://marp-tp.atlassian.net/jira/software/projects/GIR/boards/1/backlog] - JIRA, отслеживание наших удач и нет
 
 # Примеры
 
@@ -23,4 +23,4 @@ https://marp-tp.atlassian.net/jira/software/projects/GIR/boards/1/backlog - JIRA
 3. Бугакова Ульяна - проходила мимо
 4. Газиева Асият - главные мыслитель, философ, филантроп, интроверт, художник, дизайнер, модель, фотограф, кулинар, тестировщик, муза проекта
 
-# Извините
+> Pardon my French
