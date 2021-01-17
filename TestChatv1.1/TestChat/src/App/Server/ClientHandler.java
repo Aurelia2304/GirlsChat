@@ -51,11 +51,15 @@ public class ClientHandler implements Runnable {
                     /*данное сообщение отправлятся всем клиентам*/
                     if (nameMessage.length == 2){
                         server.sendMessageToAllClients(nameMessage[0], nameMessage[1]);
+                        if (nameMessage[1].contains("вышел из чата!")) {
+                            server.removeClient(this);
+                        } else if (nameMessage[1].contains("покинул нас")) {
+                            server.removeClient(this);
+                        }
                     }
                     if (clientMessage.equalsIgnoreCase("Сессия завершена")) {
                         break;
                     }
-                    server.sendMessageToAllClients(nameMessage[0], nameMessage[1]);
                 }
                 /*приостановка потока*/
                 Thread.sleep(100);

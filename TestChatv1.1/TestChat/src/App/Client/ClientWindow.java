@@ -28,7 +28,7 @@ public class ClientWindow extends JFrame {
     public ClientWindow(){
 
         try {
-            Socket clientS = new Socket("localhost", 8080);
+            clientS = new Socket("localhost", 8080);
             inMessage = new Scanner(clientS.getInputStream());
             outMessage = new PrintWriter(clientS.getOutputStream());
         } catch (IOException e) {
@@ -44,8 +44,6 @@ public class ClientWindow extends JFrame {
         jtaTextAreaMessage.setLineWrap(true);
         JScrollPane jsp = new JScrollPane(jtaTextAreaMessage);
         add(jsp, BorderLayout.CENTER);
-        JLabel jlNumberOfClients = new JLabel("Количество клиентов в чате: ");
-        add(jlNumberOfClients, BorderLayout.NORTH);
         JPanel bottomPanel = new JPanel(new BorderLayout());
         add(bottomPanel, BorderLayout.SOUTH);
         JButton jbSendMessage = new JButton("Отправить");
@@ -79,9 +77,6 @@ public class ClientWindow extends JFrame {
             }
         });
 
-
-
-
         /*при фокусе поле сообщения очищается*/
         jtfMessage.addFocusListener(new FocusAdapter() {
             @Override
@@ -111,7 +106,6 @@ public class ClientWindow extends JFrame {
                             String inMes = inMessage.nextLine();
                             String clientsInChat = "Клиентов в чате = ";
                             if (inMes.indexOf(clientsInChat) == 0) {
-                                jlNumberOfClients.setText(inMes);
                             } else {
                                 /*выводим сообщение*/
                                 jtaTextAreaMessage.append(inMes);

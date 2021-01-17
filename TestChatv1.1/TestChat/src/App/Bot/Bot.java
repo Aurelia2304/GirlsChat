@@ -57,8 +57,6 @@ public class Bot {
                 e.printStackTrace();
             }
 
-
-
         }
     String dirtyPhrases[] = {"Невоспитанный пес!", "Осуждаю", "Иди худей!", "Ля,Krisa"};
     private void generateAnswer(String message){
@@ -74,4 +72,4 @@ public class Bot {
         outMessage.println(message);
         outMessage.flush();
     }
-    }
+}
