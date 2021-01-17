@@ -73,7 +73,7 @@ public class Server {
             sendMessageToAllClients("Сервер", clientsNames.get(i));
         }
     }
-
+    /*запуск бота*/
     public void startBot(){
         new Thread(()->{
             Bot bot = new Bot(this);

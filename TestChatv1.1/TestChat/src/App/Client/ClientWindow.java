@@ -28,6 +28,7 @@ public class ClientWindow extends JFrame {
     public ClientWindow(){
 
         try {
+            /*запуск сокета клиента*/
             clientS = new Socket("localhost", 8080);
             inMessage = new Scanner(clientS.getInputStream());
             outMessage = new PrintWriter(clientS.getOutputStream());
@@ -128,9 +129,9 @@ public class ClientWindow extends JFrame {
                 try {
                     // здесь проверяем, что имя клиента непустое и не равно значению по умолчанию
                     if (!clientName.isEmpty() && clientName != "Введите ваше имя: ") {
-                        outMessage.println(clientName + " вышел из чата!");
+                        outMessage.println(clientName + ": вышел из чата!");
                     } else {
-                        outMessage.println("Тайный слушатель покинул нас");
+                        outMessage.println("Тайный слушатель: покинул нас");
                     }
                     /*служебное сообщение*/
                     outMessage.flush();

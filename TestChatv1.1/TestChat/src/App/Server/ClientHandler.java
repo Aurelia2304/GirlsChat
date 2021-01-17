@@ -23,6 +23,7 @@ public class ClientHandler implements Runnable {
     // конструктор, который принимает клиентский сокет и сервер
     public ClientHandler(Socket socket, Server server) {
         try {
+            /*при присоединении нового клиента*/
             clients_count++;
             this.server = server;
             this.clientSocket = socket;

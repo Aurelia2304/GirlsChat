@@ -20,6 +20,7 @@ public class Bot {
 
     public Bot(Server server) {
         try {
+            /*запуск сокета бота*/
             socket = new Socket("localhost", 8080);
             inMessage = new Scanner(socket.getInputStream());
             outMessage = new PrintWriter(socket.getOutputStream());
